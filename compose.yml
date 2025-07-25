@@ -1,0 +1,11 @@
+---
+services:
+    transformers-notebook:
+        build: ./
+        ports:
+            - 8000:8888
+        environment:
+            - JUPYTER_TOKEN=benemre
+        volumes:
+            - ./:/home/jovyan
+...

@@ -1,0 +1,243 @@
+﻿1
+00:00:00,033 --> 00:00:04,471
+Now the general idea behind unit testing
+is that we want to assert that
+
+2
+00:00:04,471 --> 00:00:05,872
+something is true.
+
+3
+00:00:05,872 --> 00:00:10,143
+So we are making sure
+that a certain condition is met.
+
+4
+00:00:10,276 --> 00:00:14,280
+If it is, then we pass our test
+and we can move on to the next one.
+
+5
+00:00:14,481 --> 00:00:17,784
+If it is not,
+then we make changes to our software
+
+6
+00:00:17,817 --> 00:00:22,756
+and we continue changing it all the way
+until we are able to pass the test.
+
+7
+00:00:23,023 --> 00:00:25,625
+But what exactly are we testing?
+
+8
+00:00:26,092 --> 00:00:30,663
+Which brings me to my awesome testing
+checklist that you can find on my GitHub.
+
+9
+00:00:30,930 --> 00:00:35,235
+I will explain and demonstrate
+most of the checklist items, so please
+
+10
+00:00:35,235 --> 00:00:38,738
+feel free to use the time stamps to skip
+anything you already know.
+
+11
+00:00:39,172 --> 00:00:42,776
+Now the first thing we test
+is the existence of elements.
+
+12
+00:00:43,043 --> 00:00:45,045
+Is it there or is it not?
+
+13
+00:00:45,345 --> 00:00:49,282
+Or alternatively,
+can I access this element when I need it?
+
+14
+00:00:49,549 --> 00:00:52,852
+So at this point,
+we don't really care about the content.
+
+15
+00:00:53,053 --> 00:00:56,823
+We only care
+if our classes, functions, assets,
+
+16
+00:00:56,823 --> 00:00:59,726
+or other software
+elements are manifesting.
+
+17
+00:01:00,093 --> 00:01:01,694
+So let's see an example for this.
+
+18
+00:01:01,694 --> 00:01:05,899
+We will rename our test to test underscore
+app exists.
+
+19
+00:01:06,199 --> 00:01:08,435
+And how do we check if something exists?
+
+20
+00:01:08,835 --> 00:01:11,404
+We simply check if it is not none.
+
+21
+00:01:11,671 --> 00:01:16,142
+Where none represents the absence of data
+or simply nothing.
+
+22
+00:01:16,443 --> 00:01:19,579
+For this
+we will use a statement called self.
+
+23
+00:01:19,913 --> 00:01:24,584
+Dot assert is not known in camel case.
+
+24
+00:01:24,784 --> 00:01:27,720
+And as you may guess,
+this statement will receive
+
+25
+00:01:27,720 --> 00:01:32,392
+our app is an argument,
+but how exactly can we target our app?
+
+26
+00:01:32,859 --> 00:01:37,564
+So let's go back to our my app
+dot p file and let's navigate below.
+
+27
+00:01:37,797 --> 00:01:40,800
+Let's look for the command
+that runs our application,
+
+28
+00:01:40,800 --> 00:01:44,471
+which is something that we usually find
+at the very, very end of the file
+
+29
+00:01:44,471 --> 00:01:47,740
+wrapped in an
+if name equals main statement.
+
+30
+00:01:47,974 --> 00:01:52,212
+Now in our case, we run the app
+with Pythagoras and Dot Run.
+
+31
+00:01:52,412 --> 00:01:56,015
+So let's quickly copy Pythagorean
+because we don't want to type it again
+
+32
+00:01:56,316 --> 00:01:58,518
+and back in our test file.
+
+33
+00:01:58,518 --> 00:02:02,722
+It will create a local variable inside
+our first test called app
+
+34
+00:02:03,256 --> 00:02:06,826
+and we will assign it to my app
+Dot Pythagoras.
+
+35
+00:02:07,093 --> 00:02:10,263
+Remember, because we are importing my app,
+
+36
+00:02:10,263 --> 00:02:14,701
+we need to specify my app
+in front of the Pythagorean Plus.
+
+37
+00:02:15,735 --> 00:02:17,070
+Now let's quickly print
+
+38
+00:02:17,070 --> 00:02:20,106
+it right below
+just because I want to have a quick look.
+
+39
+00:02:20,874 --> 00:02:25,011
+And lastly,
+we'll pass it into our assertion.
+
+40
+00:02:25,145 --> 00:02:26,312
+So there you go.
+
+41
+00:02:26,312 --> 00:02:27,747
+App Awesome.
+
+42
+00:02:27,747 --> 00:02:28,681
+Now let's save it.
+
+43
+00:02:28,681 --> 00:02:31,451
+Let's quickly run it with Python.
+
+44
+00:02:31,484 --> 00:02:35,421
+Just underscore my app dot p y and lovely.
+
+45
+00:02:35,455 --> 00:02:38,224
+We ran one test and we passed it.
+
+46
+00:02:38,224 --> 00:02:40,160
+Given this lovely. Okay.
+
+47
+00:02:40,160 --> 00:02:42,595
+We've also printed our app object, which
+
+48
+00:02:43,396 --> 00:02:46,099
+doesn't tell us much,
+but this is how it looks like.
+
+49
+00:02:46,399 --> 00:02:47,100
+Great.
+
+50
+00:02:47,100 --> 00:02:49,802
+We now know how to test
+for the existence of classes.
+
+51
+00:02:49,969 --> 00:02:52,939
+We can now move on with some other
+checklist elements.
+
+52
+00:02:52,939 --> 00:02:56,042
+For example, UI elements also known
+
+53
+00:02:56,042 --> 00:03:08,821
+as widgets.
