@@ -25,13 +25,12 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
-ENV STREAMLIT_STATIC_EMBED=true
-ENV STREAMLIT_ROOT="/home/appuser/.streamlit"
+ENV XDG_CONFIG_HOME=/home/user
 
 
 
-# Eklemek istediğimiz satır:
-CMD ["streamlit", "run", "streamlit_app.py", "--server.port=8501", "--server.enableCORS=false"]
+CMD ["streamlit", "run", "streamlit_app.py", "--server.port=7860", "--server.address=0.0.0.0"]
+
 
 
 
