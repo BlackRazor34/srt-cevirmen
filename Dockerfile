@@ -8,6 +8,10 @@ COPY . .
 # Gereksinimleri yükle
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Uygulama kodunuzun /app klasöründe olduğunu varsayarsak
+ENV HOME=/app
+WORKDIR /app
+
 # Streamlit config dosyası oluştur
 RUN mkdir -p /app/.streamlit && \
     echo "\
