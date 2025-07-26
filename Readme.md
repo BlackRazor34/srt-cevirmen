@@ -5,6 +5,7 @@ colorFrom: blue
 colorTo: green
 sdk: docker
 app_port: 8501
+pinned: false
 ---
 
 # 🎬 Altyazı Çevirmeni – Streamlit Uygulaması en➡️tr
@@ -29,5 +30,5 @@ Kullanıcılar tarayıcıdan arayüze ulaşıp dosyalarını yükleyebilir ve te
 ### Bu repository'yi klonlayın
 
 ```bash
-git clone [https://github.com/emredevops/srt-cevirmen.git](https://github.com/emredevops/srt-cevirmen.git)
+git clone [https://github.com/BlackRazor34/srt-cevirmen.git](https://github.com/BlackRazor34/srt-cevirmen.git)
 cd srt-cevirmen
