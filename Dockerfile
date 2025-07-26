@@ -1,32 +1,27 @@
-# Dockerfile
-
-# Stage 1: Install dependencies
-FROM python:3.9-slim AS builder
-
-RUN useradd -ms /bin/bash streamlit
-ENV HOME=/home/streamlit
-ENV PATH=$HOME/.local/bin:$PATH
+FROM python:3.10-slim
 
 WORKDIR /app
 
-COPY --chown=streamlit:streamlit requirements.txt .
+COPY . .
 
-RUN su streamlit -c "pip install --no-cache-dir --user -r requirements.txt"
+# .streamlit klasörünü oluştur
+RUN mkdir -p /app/.streamlit && \
+    chmod -R 755 /app/.streamlit
 
-# Stage 2: Create the final image
-FROM python:3.9-slim
+# Streamlit config dosyasını oluştur
+RUN echo "\
+[general]\n\
+email = \"\"\n\
+\n\
+[server]\n\
+headless = true\n\
+enableCORS = false\n\
+port = 7860\n\
+\n\
+[theme]\n\
+base = \"light\"\n\
+" > /app/.streamlit/config.toml
 
-RUN useradd -ms /bin/bash streamlit
-ENV HOME=/home/streamlit
-ENV PATH=$HOME/.local/bin:$PATH
+RUN pip install --no-cache-dir -r requirements.txt
 
-WORKDIR /app
-
-COPY --from=builder $HOME/.local /home/streamlit/.local
-COPY --chown=streamlit:streamlit . .
-
-USER streamlit
-
-EXPOSE 8501
-
-CMD ["streamlit", "run", "streamlit_app.py"]
+CMD ["streamlit", "run", "streamlit_app.py", "--server.port=7860", "--server.address=0.0.0.0"]
