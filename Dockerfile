@@ -17,7 +17,15 @@ RUN pip install --no-cache-dir \
     torch \
     sentencepiece
 
-# Uygulamayı başlat
+FROM python:3.9
+
+WORKDIR /app
+
+COPY . .
+
+RUN pip install -r requirements.txt
+
+# Eklemek istediğimiz satır:
 CMD ["streamlit", "run", "streamlit_app.py", "--server.port=8501", "--server.enableCORS=false"]
 
 
