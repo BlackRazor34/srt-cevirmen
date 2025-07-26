@@ -1,26 +1,24 @@
-# Python 3.9 bazlı imaj
 FROM python:3.9-slim
 
-# Çalışma dizini
+# Uygulama klasörü
 WORKDIR /app
 
-# Gerekli dosyaları kopyala
+# Tüm dosyaları kopyala
 COPY . .
 
-# Gereksiz cache dosyalarını almadan yükle
+# Gerekli Python paketlerini yükle
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Streamlit'in config dosyalarını yazabilmesi için ortam değişkenleri
-ENV XDG_CONFIG_HOME=/home/user
-ENV HOME=/home/user
+# Yeni bir kullanıcı oluştur ve root dizininden çık
+RUN useradd -m myuser
+USER myuser
 
-# Gerekli portu aç (Hugging Face varsayılanı 7860)
+# Streamlit konfigürasyonu bu dizine yazılacak
+ENV HOME=/home/myuser
+ENV XDG_CONFIG_HOME=/home/myuser/.config
+
+# Portu aç
 EXPOSE 7860
 
-# Uygulamanın başlangıç komutu
+# Uygulamayı çalıştır
 CMD ["streamlit", "run", "streamlit_app.py", "--server.port=7860", "--server.address=0.0.0.0"]
-
-
-
-
-
