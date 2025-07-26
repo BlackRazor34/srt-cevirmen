@@ -1,0 +1,19 @@
+# Docker'ın build işlemine dahil etmemesi gerekenler
+
+# Python sanal ortamları
+venv/
+.venv/
+env/
+
+# Python önbelleği
+__pycache__/
+
+# Hugging Face ve diğer büyük önbellek klasörleri
+.cache/
+
+# Git klasörü
+.git/
+
+# Kod editörü ayarları
+.vscode/
+.idea/

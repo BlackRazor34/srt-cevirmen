@@ -1,11 +1,15 @@
----
+# docker-compose.yml
+
+version: '3.8'
+
 services:
-    transformers-notebook:
-        build: ./
-        ports:
-            - 8000:8888
-        environment:
-            - JUPYTER_TOKEN=benemre
-        volumes:
-            - ./:/home/jovyan
-...
+  translator-app:
+    build: .
+    container_name: srt_translator_app
+    ports:
+      # Bilgisayarınızdaki 8501 portunu container'daki 8501 portuna yönlendirir
+      - "8501:8501"
+    volumes:
+      # Kodda yaptığınız değişikliklerin anında container'a yansıması için
+      # Proje klasörünü container içindeki /app'e bağlar.
+      - .:/app:rw
